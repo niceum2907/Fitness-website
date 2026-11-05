@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GymPlan – Your personal workout App</title>
+  <!-- Logo im Browser-Tab -->
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="apple-touch-icon" href="logo.svg" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <!-- NEU: Logo (Bumper-Scheibe mit Haken) statt "GP" -->
+    <div class="brand"><img src="logo.svg" class="logo" alt="GymPlan Logo" /> <b>GymPlan</b> <span class="muted">Workout Builder</span></div>
+
+    <!-- NEU: Tabs Workouts / Supplements -->
+    <nav class="tabs" role="tablist">
+      <button class="tab active" data-view="workout" role="tab">Workouts</button>
+      <button class="tab" data-view="supp" role="tab">Supplements</button>
+    </nav>
+
+    <button id="btn-new-ex" class="btn">+ Eigene Übung</button>
+  </header>
+
+  <!-- ===== Ansicht 1: Workouts ===== -->
+  <main class="layout" id="view-workout">
+    <!-- Übungsbibliothek -->
+    <section class="panel library">
+      <div class="panel-head">
+        <h2>Übungen</h2>
+        <span id="lib-count" class="muted"></span>
+      </div>
+      <div class="filters">
+        <input id="search" type="search" placeholder="Übung suchen …" />
+        <select id="f-muscle"></select>
+        <select id="f-equip"></select>
+      </div>
+      <div id="lib-grid" class="grid"></div>
+    </section>
+
+    <!-- Workout-Builder -->
+    <section class="panel builder">
+      <div class="panel-head wk-head">
+        <input id="wk-name" class="wk-name" aria-label="Workout-Name" />
+        <div class="wk-actions">
+          <select id="wk-saved" aria-label="Gespeicherte Workouts"></select>
+          <button id="wk-save" class="btn">Speichern</button>
+          <button id="wk-new" class="btn ghost">Neu</button>
+          <button id="wk-del" class="btn ghost danger">Löschen</button>
+        </div>
+      </div>
+
+      <div id="wk-stats" class="stats"></div>
+      <div id="wk-list" class="wk-list"></div>
+
+      <div class="block">
+        <h3>Zielmuskulatur</h3>
+        <div class="muscle-wrap">
+          <div id="body-map" class="body-map"></div>
+          <div id="muscle-bars" class="muscle-bars"></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3>Exportieren</h3>
+        <div class="export-btns">
+          <button class="btn exp" data-exp="apple">Apple Watch / iPhone</button>
+          <button class="btn exp" data-exp="garmin">Garmin (.FIT)</button>
+          <button class="btn exp" data-exp="ics">Kalender (.ics)</button>
+          <button class="btn exp" data-exp="csv">Excel (.xlsx)</button>
+          <button class="btn exp" data-exp="csvfile">CSV</button>
+          <button class="btn exp" data-exp="json">JSON-Backup</button>
+          <button class="btn exp" data-exp="print">Drucken / PDF</button>
+          <button class="btn exp" data-exp="copy">Text kopieren</button>
+          <label class="btn ghost">JSON importieren<input type="file" id="imp" accept=".json,application/json" hidden /></label>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Ansicht 2: Supplement-Tracker (NEU) ===== -->
+  <main class="layout" id="view-supp" hidden>
+    <!-- Profil & Vorschläge -->
+    <section class="panel">
+      <div class="panel-head"><h2>Dein Profil</h2><span class="muted small">für persönliche Vorschläge</span></div>
+      <form id="sp-profile" class="profile-grid" autocomplete="off"></form>
+      <div id="sp-intensity" class="intensity"></div>
+      <div id="sp-banner"></div>
+      <div id="sp-recs"></div>
+      <p class="disclaimer">Hinweis: Diese Vorschläge sind allgemeine, evidenzbasierte Informationen und ersetzen keine ärztliche Beratung.
+        Bei Vorerkrankungen, Medikamenten, Schwangerschaft oder unter 18 bitte vorher mit Arzt/Ärztin sprechen. „Food first“: Eine ausgewogene Ernährung kommt immer zuerst.</p>
+    </section>
+
+    <!-- Mein Stack / Tracker -->
+    <section class="panel builder">
+      <div class="panel-head"><h2>Mein Stack</h2><span id="sp-today" class="muted"></span></div>
+      <div id="sp-progress" class="sp-progress"></div>
+      <div id="sp-list" class="sp-list"></div>
+      <div class="block">
+        <h3>Eigenes Supplement hinzufügen</h3>
+        <form id="sp-add" class="sp-add">
+          <input name="name" required maxlength="40" placeholder="Name, z. B. Zink" />
+          <input name="dose" maxlength="30" placeholder="Dosis, z. B. 10 mg" />
+          <select name="time"></select>
+          <button class="btn" type="submit">Hinzufügen</button>
+        </form>
+      </div>
+      <div class="block">
+        <h3>Letzte 14 Tage</h3>
+        <div id="sp-history" class="sp-history"></div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="modal"><div class="modal-inner" id="modal-body"></div></dialog>
+  <div id="print-area"></div>
+  <div id="toast" role="status"></div>
+
+  <!-- Reihenfolge wichtig: normale Scripts, damit index.html auch per Doppelklick läuft -->
+  <script src="js/data.js"></script>
+  <script src="js/figures.js"></script>
+  <script src="js/instructions.js"></script> <!-- NEU: Übungsanleitungen -->
+  <script src="js/export.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/supplements.js"></script> <!-- NEU -->
+</body>
+</html>

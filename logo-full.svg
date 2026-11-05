@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 344 136" role="img" aria-label="GymPlan">
+  <defs>
+    <linearGradient id="acca" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ff5e3a"/><stop offset="1" stop-color="#ffb02e"/></linearGradient>
+    <radialGradient id="ruba" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#2c313c"/><stop offset="1" stop-color="#14161b"/></radialGradient>
+    <linearGradient id="steela" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f1f3f7"/><stop offset="1" stop-color="#8e96a6"/></linearGradient>
+    <path id="rima" d="M64,64 m-54.5,0 a54.5,54.5 0 1,1 109,0 a54.5,54.5 0 1,1 -109,0"/>
+  </defs>
+  <circle cx="64" cy="64" r="61" fill="url(#ruba)"/>
+  <circle cx="64" cy="64" r="49" fill="none" stroke="url(#acca)" stroke-width="4"/>
+  <circle cx="64" cy="64" r="43" fill="none" stroke="#0c0e12" stroke-width="1.5" opacity=".7"/>
+  <text transform="rotate(-62 64 64)" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="8" font-weight="800" letter-spacing="2.4" fill="#8a92a3"><textPath href="#rima">GYMPLAN • 20 KG</textPath></text>
+  <circle cx="64" cy="64" r="17" fill="url(#steela)"/>
+  <circle cx="64" cy="64" r="10" fill="#0c0e12"/>
+  <circle cx="64" cy="51" r="1.3" fill="#5a6170"/><circle cx="64" cy="77" r="1.3" fill="#5a6170"/>
+  <circle cx="51" cy="64" r="1.3" fill="#5a6170"/><circle cx="77" cy="64" r="1.3" fill="#5a6170"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="36,86 56,104 118,30" stroke="#0c0e12" stroke-width="22"/>
+    <polyline points="36,86 56,104 118,30" stroke="url(#acca)" stroke-width="13"/>
+  </g>
+  <text x="148" y="82" font-family="system-ui,-apple-system,'Segoe UI',Roboto,sans-serif" font-size="54" font-weight="800" letter-spacing="-1" fill="currentColor">Gym<tspan fill="#ff5e3a">Plan</tspan></text>
+</svg>
